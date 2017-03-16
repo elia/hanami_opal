@@ -118,6 +118,9 @@ module Web
       # ASSETS
       #
       assets do
+        # require 'opal'
+        require 'tilt/opal'
+
         # JavaScript compressor
         #
         # Supported engines:
@@ -148,8 +151,15 @@ module Web
         # Specify sources for assets
         #
         sources << [
-          'assets'
+          'assets',
+          *Opal.paths,
         ]
+
+        # This is needed to allow require of other files in assets/javascripts
+        # from Opal files. There's probably a more "Hanami" way of doing this.
+        Dir[root.join('assets/*').to_s].each do |path|
+          Opal.append_path path if File.directory? path
+        end
       end
 
       ##

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'hanami',       '1.0.0.beta2'
 gem 'hanami-model', '~> 1.0.0.beta2'
+gem 'opal'
 
 gem 'sqlite3'
 

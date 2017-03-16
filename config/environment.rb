@@ -4,6 +4,9 @@ require 'hanami/model'
 require_relative '../lib/hanami_opal'
 require_relative '../apps/web/application'
 
+# For some reason without this the initializer isn't executed
+require_relative './initializers/opal'
+
 Hanami.configure do
   mount Web::Application, at: '/'
 
